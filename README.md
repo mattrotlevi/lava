@@ -17,7 +17,7 @@ Lava was designed with the intent to make the process of adding modules they dee
 ## Installation
 
 ```bash
-git clone git@git.mwrinfosecurity.com:matthew.rotlevi/lava.git
+git clone https://github.com/mattrotlevi/lava.git
 ./setup.sh (hit enter for all the prompts)
 ```
 
@@ -90,7 +90,7 @@ I tested the module with [ngrok.io](https://github.com/inconshreveable/ngrok)
 
 
 ## Contributing
-The intent of this project is to help pentesters in an Azure engagement. I specifically attempted to make the framework as to add to and grow as possible.
+The intent of this project is to help pentesters in an Azure engagement. I specifically attempted to make the framework as easy to add to and extend as possible.
 
 Therefore, if you want to add your own modules please feel free to submit a pull request, clone, or whatever. 
 
