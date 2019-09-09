@@ -85,7 +85,7 @@ I tested the module with [ngrok.io](https://github.com/inconshreveable/ngrok)
  ```
  - Place ngrok in a directory with the exfil.php file and a subdirectory called /uploads (make sure write is enabled)
  - run ```./nrgok```
- - run the exfil data module and supply the ngrok url and data will be exfiltrated
+ - run the exfil data module and supply the ngrok url and data will automatically be exfiltrated
 
 
 
