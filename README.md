@@ -11,7 +11,7 @@
 
 ## Background
 
-Inspired by Pacu for AWS by RhinoSecurityLabs, I wanted to create a tool that did not simply do configuration reviews of Azure cloud environments, but one that takes that extra step with useful exploitation modules for penetration testing.
+Inspired by Pacu for AWS by RhinoSecurityLabs, I wanted to create a tool that did not simply do configuration reviews of Azure cloud environments, but one that takes that extra step with useful exploitation modules for penetration testing. The framework was initially developed during my time at MWR InfoSecurity.
 
 Lava was designed with the intent to make the process of adding modules they deem useful as easy as possible for a penetration tester.
 ## Installation
