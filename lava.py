@@ -86,7 +86,6 @@ def show_modules():
 	print("-------------------")
 	print("\t cosmos_db_list")
 	print("\t cosmos_db_get_keys")
-	print("\t cosmos_db_get_conn_strings")
 	print("------------------------")
 	print("SQL MODULES")
 	print("------------------------")
