@@ -54,7 +54,8 @@ def start(args):
 			return
 		json_obj = json.loads(ret.stdout.decode('utf-8'))
 		account_keys.append(json_obj[0]['value'])
-	print(accts[i])
+
+	print(accts[i], "\n")
 	pprint.pprint(account_keys)
 
 

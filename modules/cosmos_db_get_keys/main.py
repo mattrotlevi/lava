@@ -22,7 +22,7 @@ def start(args):
 
 	print("[+] getting cosmos db accounts [+]")
 	for i in range(len(names)):
-		cosmos_info = subprocess.run(['az', 'cosmosdb', 'keys', 'list', '--name', names[i], '--resource-group', rgrps[i], '--type', 'connection-strings', '--query', '[].{collation:collation, name:name, location:location, dbId:databaseId}'], stdout=subprocess.PIPE)
+		cosmos_info = subprocess.run(['az', 'cosmosdb', 'keys', 'list', '--name', names[i], '--resource-group', rgrps[i], '--type', 'connection-strings'], stdout=subprocess.PIPE)
 		cosmos_info_json = json.loads(cosmos_info.stdout.decode('utf-8'))
 		print(names[i], "\n")
 		pprint.pprint(cosmos_info_json)
