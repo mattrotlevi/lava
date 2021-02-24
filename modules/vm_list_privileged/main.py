@@ -29,7 +29,7 @@ def start(args):
                         vm_identity_role_json = json.loads(vm_identity_role.stdout.decode('utf-8'))
                         pprint.pprint(vm_list_json[i])
                         pprint.pprint(vm_identity_role_json)
-                        print("[++++++++++++++++++++++++++++++++++++++]")
+                        print("[+++++++++++++++++++++++++++++++++++++++++++++]")
                     else:
-                        print("[+++++++] vm is not privileged [+++++++]")
-                        print("[++++++++++++++++++++++++++++++++++++++]")
+                        print("[+++++++] vm found but not privileged [+++++++]")
+                        print("[+++++++++++++++++++++++++++++++++++++++++++++]")
