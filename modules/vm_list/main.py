@@ -22,17 +22,12 @@ def start(args):
 		vm_iplist = subprocess.run(['az','vm', 'list-ip-addresses', '--query', '[].{name:virtualMachine.name, privateIp:virtualMachine.network.privateIpAddresses, publicIp:virtualMachine.network.publicIpAddresses[].ipAddress}'], stdout=subprocess.PIPE)
 		vm_iplist_json = json.loads(vm_iplist.stdout.decode('utf-8'))
 
-		if vm_list_json[i]['app_id'] != "null":
-			vm_identity_role = subprocess.run(['az','role', 'assignment', 'list', '--assignee', vm_list_json[i]['app_id'], '--include-groups', '--include-inherited', '--query', '[].{role:roleDefinitionName, scope:scope}'], stdout=subprocess.PIPE)
-			vm_identity_role_json = json.loads(vm_identity_role.stdout.decode('utf-8'))
-
 		for i in range(len(vm_list_json)):
 			vm_list_json[i].update(vm_iplist_json[i])
-			vm_list_json[i].update(vm_identity_role_json[i])
-			
-			pprint.pprint(vm_list_json)	
+		
+		pprint.pprint(vm_list_json)
 
-			return
+		return
 	
 	if "-rgrp" in args[0]:
 
@@ -50,11 +45,7 @@ def start(args):
 		for i in range(len(vm_list_json)):
 			vm_list_json[i].update(vm_iplist_json[i])
 		
-		for i in range(len(vm_list_json)):
-			if vm_list_json[i]['app_id'] != "null":
-				vm_identity_role = subprocess.run(['az','role', 'assignment', 'list', '--assignee', vm_list_json[i]['app_id'], '--include-groups', '--include-inherited', '--query', '[].{role:roleDefinitionName, scope:scope}'], stdout=subprocess.PIPE)
-				vm_identity_role_json = json.loads(vm_identity_role.stdout.decode('utf-8'))
-				vm_list_json[i].update(vm_iplist_json[i])
-				vm_list_json[i].update(vm_identity_role_json[i])
+		pprint.pprint(vm_list_json)
+
+	
 		
-				pprint.pprint(vm_list_json)

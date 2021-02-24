@@ -69,6 +69,7 @@ def show_modules():
 	print("VM/VMSS MODULES")
 	print("------------------------")
 	print("\t vm_list")
+	print("\t vm_list_privileged")
 	print("\t vm_rce")
 	print("\t vmss_list")
 	print("\t vmss_rce")
