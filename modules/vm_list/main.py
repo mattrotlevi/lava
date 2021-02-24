@@ -29,9 +29,9 @@ def start(args):
 				vm_list_json[i].update(vm_iplist_json[i])
 				vm_list_json[i].update(vm_identity_role_json[i])
 		
-		pprint.pprint(vm_list_json)	
+				pprint.pprint(vm_list_json)	
 
-		return
+				return
 	
 	if "-rgrp" in args[0]:
 
@@ -56,7 +56,7 @@ def start(args):
 				vm_list_json[i].update(vm_iplist_json[i])
 				vm_list_json[i].update(vm_identity_role_json[i])
 		
-		pprint.pprint(vm_list_json)
+				pprint.pprint(vm_list_json)
 
 	
 		
