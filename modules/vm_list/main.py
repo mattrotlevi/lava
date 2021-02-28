@@ -16,7 +16,7 @@ def start(args):
 
 		print("[+] getting vm's in subscription [+]")
 		
-		vm_list = subprocess.run(['az','vm', 'list', '--query', '[].{name:name,os:storageProfile.osDisk.osType, username:osProfile.adminUsername, vm_size:hardwareProfile.vmSize, resource_group: resourceGroup}'], stdout=subprocess.PIPE)
+		vm_list = subprocess.run(['az','vm', 'list', '--query', '[].{name:name,os:storageProfile.osDisk.osType, username:osProfile.adminUsername, vm_size:hardwareProfile.vmSize, resource_group:resourceGroup, managed_identity:identity.type, app_id:identity.principalId}'], stdout=subprocess.PIPE)
 		vm_list_json = json.loads(vm_list.stdout.decode('utf-8'))
 
 		vm_iplist = subprocess.run(['az','vm', 'list-ip-addresses', '--query', '[].{name:virtualMachine.name, privateIp:virtualMachine.network.privateIpAddresses, publicIp:virtualMachine.network.publicIpAddresses[].ipAddress}'], stdout=subprocess.PIPE)
@@ -36,7 +36,7 @@ def start(args):
 		ind = args[0].index("-rgrp")
 		resource_grp_name = args[0][ind+1]
 
-		vm_list = subprocess.run(['az','vm', 'list', '-g', resource_grp_name, '--query', '[].{name:name,os:storageProfile.osDisk.osType, username:osProfile.adminUsername, vm_size:hardwareProfile.vmSize, resource_group: resourceGroup}'], stdout=subprocess.PIPE)
+		vm_list = subprocess.run(['az','vm', 'list', '-g', resource_grp_name, '--query', '[].{name:name,os:storageProfile.osDisk.osType, username:osProfile.adminUsername, vm_size:hardwareProfile.vmSize, resource_group:resourceGroup, managed_identity:identity.type, app_id:identity.principalId}'], stdout=subprocess.PIPE)
 		vm_list_json = json.loads(vm_list.stdout.decode('utf-8'))
 
 		vm_iplist = subprocess.run(['az','vm', 'list-ip-addresses', '-g', resource_grp_name, '--query', '[].{name:virtualMachine.name, privateIp:virtualMachine.network.privateIpAddresses, publicIp:virtualMachine.network.publicIpAddresses[].ipAddress}'], stdout=subprocess.PIPE)
@@ -49,4 +49,3 @@ def start(args):
 
 	
 		
-
