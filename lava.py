@@ -82,6 +82,7 @@ def show_modules():
 	print("\t stg_get_keys")
 	print("\t stg_get_conn_strings")
 	print("\t stg_blob_download")
+	print("\t stg_file_download")
 	print("-------------------")
 	print("COSMOS DB MODULES")
 	print("-------------------")

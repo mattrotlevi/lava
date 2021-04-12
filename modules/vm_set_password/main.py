@@ -4,7 +4,7 @@ import pprint
 
 def start(args):
 
-        help_str = "usage:\n\texec vm_list_privileged [-rgrp resource-group] ---> will list all vms with privileged system assigned managed identities and public/private ips"
+        help_str = "usage:\n\texec vm_set_password [-usr username] [-pwd password] ---> will list all vms and public/private ips"
 
         if(len(args)>0):
                 if(args[0][0] == "?"):
