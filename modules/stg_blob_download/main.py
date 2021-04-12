@@ -8,7 +8,7 @@ import os
 def start(args):
 	storage_order = ['blob', 'dfs', 'file', 'queue', 'table', 'web']
 
-	help_str = "usage:\n\texec stg_file_download ---> scans available storage accounts in subscription for readable files and downloads them"
+	help_str = "usage:\n\texec stg_blob_download ---> scans available storage accounts in subscription for readable blobs and downloads them"
 	
 	if(len(args)>0):
 		if(args[0][0] == "?"):
@@ -41,7 +41,7 @@ def start(args):
 	for i in range(len(tmp_storages)):
 		tmp = []
 		for val in tmp_storages[i]:
-			if val != None and 'file' in val:
+			if val != None and 'blob' in val:
 				tmp.append(val)
 		storages.append(tmp)
 
@@ -58,23 +58,23 @@ def start(args):
 		account_keys.append(json_obj[0]['value'])
 
 	
-	print("[+] getting the file shares [+]")
-	#get share list
-	shares = []
+	print("[+] getting the storage containers [+]")
+	#get container list
+	containers = []
 	for i in range(len(accts)):
-		ret = subprocess.run(['az', 'storage', 'share', 'list', '--account-name', accts[i], '--account-key', account_keys[i]], stdout=subprocess.PIPE)
+		ret = subprocess.run(['az', 'storage', 'container', 'list', '--account-name', accts[i], '--account-key', account_keys[i]], stdout=subprocess.PIPE)
 		if(ret.returncode != 0):
-			print("[-] error: could not list shares [-]")
+			print("[-] error: could not list containers [-]")
 			return
 		json_obj = json.loads(ret.stdout.decode('utf-8'))
 		tmp_conts = []
 		#tmp_conts.append(rgroups[i])
 		for i in range(len(json_obj)):
 			tmp_conts.append(json_obj[i]['name'])
-		shares.append(tmp_conts)
+		containers.append(tmp_conts)
 	
 
-	#download files from share
+	#download files from container
 
 	#make temp directory
 	rand_str = str(random.random())
@@ -88,10 +88,10 @@ def start(args):
 	print("[+] files will be saved to ", file_path, "[+]")
 
 	for i in range(len(accts)):
-		for share in shares[i]:
-			ret = subprocess.run(['az', 'storage', 'file', 'download-batch', '-d', file_path, '-s', share, '--account-name', accts[i], '--account-key', account_keys[i]], stdout=subprocess.PIPE)
+		for container in containers[i]:
+			ret = subprocess.run(['az', 'storage', 'blob', 'download-batch', '-d', file_path, '-s', container, '--account-name', accts[i], '--account-key', account_keys[i]], stdout=subprocess.PIPE)
 			if(ret.returncode != 0):
-				print("[-] error: could not download files [-]")
+				print("[-] error: could not download blobs [-]")
 				return
 	print("[+] finished downloading. check directory for files [+]")
 
