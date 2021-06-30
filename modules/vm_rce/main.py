@@ -33,7 +33,7 @@ def start(args):
 
 	os_type = shell_json_obj['os_type']
 	
-	print("alright! here's a wildly shitty shell!")
+	print("alright! here's a nice shell!")
 
 	if(os_type == "Windows"):
 		while(True):
